@@ -26,10 +26,13 @@ $totalPaginas = $resultado['total_paginas'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo Tuipz</title>
+    <link rel="icon" type="image/png" href="img/Tuipz_logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .producto-card {
+            background: #fff;
+            border: 1px solid #eaf1fb;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
             height: 100%;
@@ -37,39 +40,59 @@ $totalPaginas = $resultado['total_paginas'];
         
         .producto-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(35,39,85,0.10);
+            border-color: #4f6edb;
         }
         
         .producto-imagen {
             height: 200px;
             object-fit: cover;
             width: 100%;
+            background: #eaf1fb;
         }
         
         .filtros-container {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: url('img/nubes.png');
+            background-size: cover;
+            background-position: center;
+            color: #232755;
             padding: 2rem 0;
             margin-bottom: 2rem;
         }
         
         .btn-filtro {
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
-            color: white;
+            background: rgba(234,241,251,0.7);
+            border: 1px solid #4f6edb;
+            color: #232755;
             transition: all 0.3s ease;
         }
         
         .btn-filtro:hover, .btn-filtro.active {
-            background: rgba(255,255,255,0.3);
-            color: white;
+            background: #4f6edb;
+            color: #fff;
+            border-color: #232755;
             transform: scale(1.05);
         }
         
         .paginacion-container {
-            background: #f8f9fa;
+            background: #eaf1fb;
             padding: 2rem 0;
             margin-top: 2rem;
+        }
+        
+        .pagination .page-link {
+            color: #232755;
+            border: 1px solid #4f6edb;
+            background: #fff;
+        }
+        .pagination .page-item.active .page-link {
+            background: #4f6edb;
+            color: #fff;
+            border-color: #232755;
+        }
+        .pagination .page-link:hover {
+            background: #eaf1fb;
+            color: #232755;
         }
         
         .modal-producto .modal-body {
@@ -81,16 +104,19 @@ $totalPaginas = $resultado['total_paginas'];
             max-width: 100%;
             height: auto;
             border-radius: 8px;
+            background: #eaf1fb;
         }
         
         .precio {
             font-size: 1.25rem;
             font-weight: bold;
-            color: #28a745;
+            color: #4f6edb;
         }
         
         .categoria-badge {
             font-size: 0.8rem;
+            background: #232755 !important;
+            color: #fff !important;
         }
         
         .navbar-brand img {
@@ -99,6 +125,26 @@ $totalPaginas = $resultado['total_paginas'];
         
         .navbar-brand:hover img {
             transform: scale(1.1);
+        }
+        
+        .navbar, .bg-dark {
+            background: #232755 !important;
+        }
+        .navbar .navbar-brand, .navbar .navbar-brand span, .navbar .navbar-brand img {
+            color: #fff !important;
+        }
+        
+        footer.bg-dark {
+            background: #232755 !important;
+            color: #fff !important;
+        }
+        
+        input[name='busqueda'] {
+            border: 2px solid #232755;
+        }
+        
+        form.d-flex button[type='submit'] {
+            border: 2px solid #232755;
         }
         
         @media (max-width: 768px) {
