@@ -39,15 +39,17 @@ function verificarRequisitos() {
 }
 
 // Función para conectar a MySQL
-function conectarMySQL($host, $username, $password) {
+function conectarMySQL($host, $username, $password, $port = 3309) {
     try {
-        $pdo = new PDO("mysql:host=$host", $username, $password);
+        $dsn = "mysql:host=$host;port=$port;charset=utf8mb4";
+        $pdo = new PDO($dsn, $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     } catch(PDOException $e) {
         return false;
     }
 }
+
 
 // Función para crear la base de datos
 function crearBaseDatos($pdo, $dbname) {
@@ -109,8 +111,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['instalar'])) {
         
         if (empty($archivosFaltantes)) {
             // Paso 3: Conectar a MySQL
-            $pdo = conectarMySQL($host, $username, $password);
-            
+            $pdo = conectarMySQL($host, $username, $password, 3309);
+
             if ($pdo) {
                 // Paso 4: Crear base de datos
                 if (crearBaseDatos($pdo, $dbname)) {

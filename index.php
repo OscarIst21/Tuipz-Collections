@@ -25,10 +25,14 @@ $totalPaginas = $resultado['total_paginas'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Tuipz</title>
+    <title>Tuipz Collections</title>
     <link rel="icon" type="image/png" href="img/Tuipz_logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
     <style>
         .producto-card {
             background: #fff;
@@ -127,6 +131,14 @@ $totalPaginas = $resultado['total_paginas'];
             transform: scale(1.1);
         }
         
+        .ancizar-sans-regular {
+            font-family: "Ancizar Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400; /* Puedes usar 100 hasta 1000 */
+            font-style: normal;
+        }
+
+        
         .navbar, .bg-dark {
             background: #232755 !important;
         }
@@ -162,9 +174,9 @@ $totalPaginas = $resultado['total_paginas'];
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand ancizar-sans-regular" href="#">
                 <img src="img/tuipz_logo.png" alt="Tuipz Logo" height="40" class="me-2">
-                Catálogo Tuipz
+                Tuipz Collections
             </a>
         </div>
     </nav>
@@ -176,7 +188,7 @@ $totalPaginas = $resultado['total_paginas'];
                 <div class="col-12">
                     <h2 class="text-center mb-4">
                         <i class="fas fa-search me-2"></i>
-                        Encuentra tu producto ideal
+                        Detalles que cuentan historias
                     </h2>
                 </div>
             </div>
@@ -218,7 +230,7 @@ $totalPaginas = $resultado['total_paginas'];
                         </a>
                         <a href="?<?= http_build_query(array_merge($_GET, ['categoria' => 'kit figuras yeso', 'pagina' => 1])) ?>" 
                            class="btn btn-filtro <?= $categoria === 'kit figuras yeso' ? 'active' : '' ?>">
-                            <i class="fas fa-sculpture me-1"></i>
+                            <i class="fas fa-brush me-1"></i>
                             Kit Figuras Yeso
                         </a>
                     </div>
@@ -363,10 +375,7 @@ $totalPaginas = $resultado['total_paginas'];
                                 <strong>Stock:</strong>
                                 <span id="modalStock" class="ms-2"></span>
                             </div>
-                            <div class="mb-3">
-                                <strong>Código:</strong>
-                                <span id="modalCodigo" class="ms-2"></span>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -380,7 +389,7 @@ $totalPaginas = $resultado['total_paginas'];
     <!-- Footer -->
     <footer class="bg-dark text-light py-4 mt-5">
         <div class="container text-center">
-            <p>&copy; 2024 Catálogo Tuipz. Todos los derechos reservados.</p>
+            <p>&copy; 2025 Tuipz Collections. Todos los derechos reservados.</p>
         </div>
     </footer>
 
@@ -400,7 +409,6 @@ $totalPaginas = $resultado['total_paginas'];
                 document.getElementById('modalDescripcion').textContent = producto.descripcion;
                 document.getElementById('modalPrecio').textContent = '$' + parseFloat(producto.precio).toFixed(2);
                 document.getElementById('modalStock').textContent = producto.stock;
-                document.getElementById('modalCodigo').textContent = producto.codigo;
             });
         });
     </script>
