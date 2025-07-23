@@ -263,7 +263,7 @@ $totalPaginas = $resultado['total_paginas'];
                     <img src="<?= htmlspecialchars($producto['imagen']) ?>" 
                          class="card-img-top producto-imagen" 
                          alt="<?= htmlspecialchars($producto['nombre']) ?>"
-                         onerror="this.src='<?= IMAGEN_PLACEHOLDER ?>'">
+                          onerror="this.onerror=null; this.src='img/Tuipz_logo.png';">
                     <div class="card-body d-flex flex-column">
                         <h6 class="card-title"><?= htmlspecialchars($producto['nombre']) ?></h6>
                         <span class="badge bg-primary categoria-badge mb-2">
@@ -371,11 +371,12 @@ $totalPaginas = $resultado['total_paginas'];
                                 <strong>Precio:</strong>
                                 <span id="modalPrecio" class="precio ms-2"></span>
                             </div>
+                            <!--
                             <div class="mb-3">
                                 <strong>Stock:</strong>
                                 <span id="modalStock" class="ms-2"></span>
                             </div>
-                            
+                            -->
                         </div>
                     </div>
                 </div>

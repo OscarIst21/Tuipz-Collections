@@ -1,71 +1,130 @@
--- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS catalogo_tuipz CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE catalogo_tuipz;
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1:3309
+-- Tiempo de generación: 23-07-2025 a las 08:23:04
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
--- Crear tabla de productos
-CREATE TABLE IF NOT EXISTS productos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    codigo VARCHAR(50) UNIQUE NOT NULL,
-    nombre VARCHAR(255) NOT NULL,
-    descripcion TEXT,
-    precio DECIMAL(10,2) NOT NULL,
-    categoria ENUM('pines', 'kit lienzos', 'kit figuras yeso') NOT NULL,
-    stock INT DEFAULT 0,
-    imagen VARCHAR(500),
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
--- Insertar productos de ejemplo - PINES
-INSERT INTO productos (codigo, nombre, descripcion, precio, categoria, stock, imagen) VALUES
-('PIN001', 'Pin Decorativo Mariposa', 'Hermoso pin decorativo con forma de mariposa, perfecto para personalizar mochilas, chaquetas y accesorios. Material de alta calidad con acabado brillante.', 15.99, 'pines', 50, 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=300&fit=crop'),
-('PIN002', 'Pin Vintage Estrella', 'Pin retro con diseño de estrella, ideal para coleccionistas y amantes del estilo vintage. Incluye cierre de seguridad.', 12.50, 'pines', 35, 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop'),
-('PIN003', 'Pin Personalizado Nombre', 'Pin personalizable con tu nombre o frase favorita. Disponible en múltiples colores y fuentes elegantes.', 18.75, 'pines', 25, 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop'),
-('PIN004', 'Pin Colección Flores', 'Set de 3 pines con diseños florales únicos. Perfectos para regalo o uso personal. Cada pin tiene un diseño diferente.', 22.00, 'pines', 40, 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=300&fit=crop'),
-('PIN005', 'Pin Metálico Corazón', 'Pin elegante con forma de corazón en metal plateado. Ideal para ocasiones especiales y regalos románticos.', 16.25, 'pines', 30, 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop'),
-('PIN006', 'Pin Anime Popular', 'Pin coleccionable de personajes populares de anime. Material resistente y colores vibrantes.', 14.99, 'pines', 45, 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop'),
-('PIN007', 'Pin Minimalista Círculo', 'Pin con diseño minimalista en forma de círculo. Perfecto para un look elegante y sobrio.', 11.75, 'pines', 55, 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop'),
-('PIN008', 'Pin Glow in the Dark', 'Pin que brilla en la oscuridad con diseño de luna y estrellas. Ideal para eventos nocturnos.', 19.50, 'pines', 20, 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=300&fit=crop'),
-('PIN009', 'Pin Colección Animales', 'Set de 4 pines con diferentes animales. Diseños tiernos y coloridos para todas las edades.', 25.00, 'pines', 35, 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=400&h=300&fit=crop'),
-('PIN010', 'Pin Premium Cristal', 'Pin de lujo con incrustaciones de cristal. Perfecto para ocasiones especiales y regalos elegantes.', 28.75, 'pines', 15, 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop');
 
--- Insertar productos de ejemplo - KIT LIENZOS
-INSERT INTO productos (codigo, nombre, descripcion, precio, categoria, stock, imagen) VALUES
-('LIEN001', 'Kit Lienzo Básico 3 Piezas', 'Kit completo para principiantes con 3 lienzos de 30x40cm, pinceles básicos y pinturas acrílicas de colores primarios. Incluye paleta de mezcla.', 45.99, 'kit lienzos', 25, 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop'),
-('LIEN002', 'Kit Lienzo Avanzado 5 Piezas', 'Kit profesional con 5 lienzos de diferentes tamaños (20x30cm, 30x40cm, 40x60cm), pinceles profesionales y paleta completa de colores acrílicos.', 89.50, 'kit lienzos', 15, 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop'),
-('LIEN003', 'Kit Lienzo Acuarela', 'Kit especializado para acuarela con 3 lienzos de papel especial, pinceles de pelo natural y 12 colores de acuarela profesionales.', 65.25, 'kit lienzos', 20, 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop'),
-('LIEN004', 'Kit Lienzo Óleo', 'Kit completo para pintura al óleo con 2 lienzos de lino, pinceles especializados, óleos de calidad y diluyente. Incluye caballete plegable.', 120.00, 'kit lienzos', 10, 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=300&fit=crop'),
-('LIEN005', 'Kit Lienzo Infantil', 'Kit diseñado para niños con 4 lienzos pequeños, pinceles suaves y pinturas no tóxicas. Incluye delantal y guía de dibujo.', 35.75, 'kit lienzos', 30, 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop'),
-('LIEN006', 'Kit Lienzo Paisaje', 'Kit especializado para pintar paisajes con 3 lienzos panorámicos, pinceles planos y paleta de colores naturales.', 75.50, 'kit lienzos', 18, 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop'),
-('LIEN007', 'Kit Lienzo Retrato', 'Kit profesional para retratos con 2 lienzos de alta calidad, pinceles finos y colores especializados para piel y detalles.', 95.25, 'kit lienzos', 12, 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop'),
-('LIEN008', 'Kit Lienzo Abstracto', 'Kit para arte abstracto con 4 lienzos de diferentes formas, pinceles expresivos y colores vibrantes. Incluye espátulas.', 68.99, 'kit lienzos', 22, 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=300&fit=crop'),
-('LIEN009', 'Kit Lienzo Minimalista', 'Kit con 3 lienzos blancos, pinceles de precisión y paleta monocromática. Perfecto para arte minimalista y moderno.', 55.00, 'kit lienzos', 28, 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop'),
-('LIEN010', 'Kit Lienzo Premium', 'Kit de lujo con lienzos de lino premium, pinceles de pelo de marta y pinturas de artista. Incluye maleta organizadora.', 150.75, 'kit lienzos', 8, 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop');
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
--- Insertar productos de ejemplo - KIT FIGURAS YESO
-INSERT INTO productos (codigo, nombre, descripcion, precio, categoria, stock, imagen) VALUES
-('YESO001', 'Kit Figuras Yeso Animales', 'Kit completo con 6 moldes de animales, yeso de secado rápido, pinturas acrílicas y pinceles. Incluye guía paso a paso.', 42.99, 'kit figuras yeso', 20, 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=400&h=300&fit=crop'),
-('YESO002', 'Kit Figuras Yeso Flores', 'Kit especializado con moldes de flores y plantas, yeso blanco, pinturas brillantes y herramientas de detalle.', 38.50, 'kit figuras yeso', 25, 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=300&fit=crop'),
-('YESO003', 'Kit Figuras Yeso Personajes', 'Kit con moldes de personajes populares, yeso de alta calidad, pinturas metálicas y accesorios decorativos.', 52.75, 'kit figuras yeso', 15, 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop'),
-('YESO004', 'Kit Figuras Yeso Navidad', 'Kit temático navideño con moldes de árboles, estrellas y figuras festivas. Incluye pinturas con brillo y decoraciones.', 45.00, 'kit figuras yeso', 30, 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop'),
-('YESO005', 'Kit Figuras Yeso Infantil', 'Kit seguro para niños con moldes grandes, yeso no tóxico, pinturas lavables y herramientas de plástico.', 35.25, 'kit figuras yeso', 35, 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop'),
-('YESO006', 'Kit Figuras Yeso Hogar', 'Kit decorativo con moldes de elementos del hogar, yeso resistente y pinturas para interiores.', 48.99, 'kit figuras yeso', 18, 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop'),
-('YESO007', 'Kit Figuras Yeso Jardín', 'Kit para exteriores con moldes de elementos de jardín, yeso impermeable y pinturas resistentes al clima.', 62.50, 'kit figuras yeso', 12, 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=300&fit=crop'),
-('YESO008', 'Kit Figuras Yeso Colección', 'Kit coleccionable con moldes únicos y limitados, yeso premium y pinturas especiales con efectos.', 75.25, 'kit figuras yeso', 10, 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop'),
-('YESO009', 'Kit Figuras Yeso Básico', 'Kit para principiantes con 4 moldes simples, yeso económico y pinturas básicas. Ideal para aprender.', 28.99, 'kit figuras yeso', 40, 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop'),
-('YESO010', 'Kit Figuras Yeso Premium', 'Kit profesional con moldes de alta definición, yeso de artista y pinturas de calidad profesional.', 85.00, 'kit figuras yeso', 8, 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop');
+--
+-- Base de datos: `catalogo_tuipz`
+--
 
--- Crear índices para mejorar el rendimiento
-CREATE INDEX idx_categoria ON productos(categoria);
-CREATE INDEX idx_precio ON productos(precio);
-CREATE INDEX idx_nombre ON productos(nombre);
-CREATE INDEX idx_codigo ON productos(codigo);
+-- --------------------------------------------------------
 
--- Mostrar estadísticas de la base de datos
-SELECT 
-    categoria,
-    COUNT(*) as total_productos,
-    AVG(precio) as precio_promedio,
-    MIN(precio) as precio_minimo,
-    MAX(precio) as precio_maximo
-FROM productos 
-GROUP BY categoria; 
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id` int(11) NOT NULL,
+  `codigo` varchar(50) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` text DEFAULT NULL,
+  `precio` decimal(10,2) NOT NULL,
+  `categoria` enum('Pines','Kit lienzos','Kit figuras yeso','Figuras de yeso') NOT NULL,
+  `stock` int(11) DEFAULT 0,
+  `imagen` varchar(500) DEFAULT NULL,
+  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `codigo`, `nombre`, `descripcion`, `precio`, `categoria`, `stock`, `imagen`, `fecha_creacion`) VALUES
+(1, 'PIN001', 'Sin Rostro 1', 'Hermoso pin decorativo de Sin Rostro de Un Viaje de Chihiro.', 50.00, 'Pines', 50, 'img/pines/sinRostro_01.jpg', '2025-07-22 17:19:29'),
+(2, 'PIN002', 'Sin Rostro 2', 'Hermoso pin decorativo de Sin Rostro de Un Viaje de Chihiro.', 50.00, 'Pines', 35, 'img/pines/sinRostro_02.jpg', '2025-07-22 17:19:29'),
+(3, 'PIN003', 'Sin Rostro 3', 'Hermoso pin decorativo de Sin Rostro de Un Viaje de Chihiro.', 50.00, 'Pines', 25, 'img/pines/sinRostro_03.jpg', '2025-07-22 17:19:29'),
+(4, 'PIN004', 'Spiderman 1', '¡El héroe favorito de Nueva York ahora en un pin! Perfecto para mochilas, gorras o tu colección Marvel.', 50.00, 'Pines', 40, 'img/pines/spiderman_01.jpg', '2025-07-22 17:19:29'),
+(5, 'PIN005', 'Spiderman 2', '¡El héroe favorito de Nueva York ahora en un pin! Perfecto para mochilas, gorras o tu colección Marvel.', 50.00, 'Pines', 30, 'img/pines/spiderman_02.jpg', '2025-07-22 17:19:29'),
+(6, 'PIN006', 'Spiderman 3', '¡El héroe favorito de Nueva York ahora en un pin! Perfecto para mochilas, gorras o tu colección Marvel.', 50.00, 'Pines', 45, 'img/pines/spiderman_03.jpg', '2025-07-22 17:19:29'),
+(7, 'PIN007', 'Spiderman 4', '¡El héroe favorito de Nueva York ahora en un pin! Perfecto para mochilas, gorras o tu colección Marvel.', 50.00, 'Pines', 55, 'img/pines/spiderman_04.jpg', '2025-07-22 17:19:29'),
+(8, 'PIN008', 'Spiderman 5', '¡El héroe favorito de Nueva York ahora en un pin! Perfecto para mochilas, gorras o tu colección Marvel.', 50.00, 'Pines', 20, 'img/pines/spiderman_05.jpg', '2025-07-22 17:19:29'),
+(9, 'PIN009', 'Spiderman 6', '¡El héroe favorito de Nueva York ahora en un pin! Perfecto para mochilas, gorras o tu colección Marvel.', 50.00, 'Pines', 35, 'img/pines/spiderman_03.jpg', '2025-07-22 17:19:29'),
+(10, 'PIN010', 'Pac-man', 'Pin de Pac-Man. Ideal para los amantes de videojuegos retro.', 50.00, 'Pines', 15, 'img/pines/pacman.jpg', '2025-07-22 17:19:29'),
+(11, 'PIN011', 'Fantasma de Pac-man 1', 'Pin de fantasma rosa de Pac-Man. Ideal para los amantes de videojuegos retro.', 50.00, 'Pines', 25, 'img/pines/pacmanRosa.jpg', '2025-07-22 17:19:29'),
+(12, 'PIN012', 'Fantasma de Pac-man 2', 'Pin de fantasma rojo de Pac-Man. Ideal para los amantes de videojuegos retro.', 50.00, 'Pines', 15, 'img/pines/pacmanRojo.jpg', '2025-07-22 17:19:29'),
+(13, 'PIN013', 'Fantasma de Pac-man 3', 'Pin de fantasma azul de Pac-Man. Ideal para los amantes de videojuegos retro.', 50.00, 'Pines', 20, 'img/pines/pacmanAzul.jpg', '2025-07-22 17:19:29'),
+(14, 'PIN014', 'Fantasma de Pac-man 4', 'Pin de fantasma naranja de Pac-Man. Ideal para los amantes de videojuegos retro.', 50.00, 'Pines', 10, 'img/pines/pacmanNaranja.jpg', '2025-07-22 17:19:29'),
+(15, 'PIN015', 'Stitch 1', 'Adorable pin de Stitch. Ideal para mochilas.', 50.00, 'Pines', 30, 'img/pines/stitch_01.jpg', '2025-07-22 17:19:29'),
+(16, 'PIN016', 'Stitch 2', 'Adorable pin de Stitch. Ideal para mochilas.', 50.00, 'Pines', 18, 'img/pines/stitch_02.jpg', '2025-07-22 17:19:29'),
+(17, 'PIN017', 'Stitch 3', 'Adorable pin de Stitch. Ideal para mochilas.', 50.00, 'Pines', 12, 'img/pines/stitch_03.jpg', '2025-07-22 17:19:29'),
+(18, 'PIN018', 'Stitch 4', 'Adorable pin de Stitch. Ideal para mochilas.', 50.00, 'Pines', 22, 'img/pines/stitch_04.jpg', '2025-07-22 17:19:29'),
+(19, 'PIN019', 'Stitch 5', 'Adorable pin de Stitch. Ideal para mochilas.', 50.00, 'Pines', 28, 'img/pines/stitch_05.jpg', '2025-07-22 17:19:29'),
+(20, 'PIN020', 'Stitch 6', 'Adorable pin de Stitch. Ideal para mochilas.', 50.00, 'Pines', 8, 'img/pines/stitch_06.jpg', '2025-07-22 17:19:29'),
+(21, 'PIN021', 'Stitch 7', 'Adorable pin de Stitch. Ideal para mochilas.', 50.00, 'Pines', 1, 'img/pines/stitch_07.jpg', '2025-07-23 05:05:19'),
+(22, 'PIN022', 'Hello Kitty 1', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_01.jpg', '2025-07-23 05:06:45'),
+(23, 'PIN023', 'Hello Kitty 2', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_02.jpg', '2025-07-23 05:06:45'),
+(24, 'PIN024', 'Hello Kitty 3', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_03.jpg', '2025-07-23 05:08:13'),
+(25, 'PIN025', 'Hello Kitty 4', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_04.jpg', '2025-07-23 05:08:30'),
+(26, 'PIN026', 'Hello Kitty 5', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_05.jpg', '2025-07-23 05:08:41'),
+(27, 'PIN027', 'Kuromi 1', 'Pin con colgante de Kuromi, el mix perfecto entre ternura y travesura. Ideal para mochilas, chamarras o tu estante kawaii.', 50.00, 'Pines', 1, 'img/pines/kuromi_01.jpg', '2025-07-23 05:09:19'),
+(28, 'PIN028', 'Kuromi 2', 'Pin con colgante de Kuromi, el mix perfecto entre ternura y travesura. Ideal para mochilas, chamarras o tu estante kawaii.', 50.00, 'Pines', 1, 'img/pines/kuromi_02.jpg', '2025-07-23 05:10:52'),
+(29, 'PIN029', 'Kuromi 3', 'Pin con colgante de Kuromi, el mix perfecto entre ternura y travesura. Ideal para mochilas, chamarras o tu estante kawaii.', 50.00, 'Pines', 1, 'img/pines/kuromi_03.jpg', '2025-07-23 05:10:52'),
+(30, 'PIN030', 'Kuromi 4', 'Pin con colgante de Kuromi, el mix perfecto entre ternura y travesura. Ideal para mochilas, chamarras o tu estante kawaii.', 50.00, 'Pines', 1, 'img/pines/kuromi_04.jpg', '2025-07-23 05:10:52'),
+(31, 'PIN031', 'Kuromi 5', 'Pin con colgante de Kuromi, el mix perfecto entre ternura y travesura. Ideal para mochilas, chamarras o tu estante kawaii.', 50.00, 'Pines', 1, 'img/pines/kuromi_05.jpg', '2025-07-23 05:10:52'),
+(32, 'PIN032', 'Gojo 1', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_01.jpg', '2025-07-23 05:14:57'),
+(33, 'PIN033', 'Gojo 2', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_02.jpg', '2025-07-23 05:14:57'),
+(34, 'PIN034', 'Gojo 3', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_03.jpg', '2025-07-23 05:14:57'),
+(35, 'PIN035', 'Gojo 4', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_04.jpg', '2025-07-23 05:14:57'),
+(36, 'PIN036', 'Gojo 5', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_05.jpg', '2025-07-23 05:14:57'),
+(37, 'PIN037', 'Gojo 6', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_06.jpg', '2025-07-23 05:14:57'),
+(38, 'PIN038', 'Gojo 7', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_07.jpg', '2025-07-23 05:14:57'),
+(39, 'PIN039', 'Gojo 8', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_08.jpg', '2025-07-23 05:14:57'),
+(40, 'PIN040', 'Gojo 9', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_09.jpg', '2025-07-23 05:14:57'),
+(41, 'PIN041', 'Gojo 10', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_10.jpg', '2025-07-23 05:14:57'),
+(42, 'PIN042', 'Gojo 11', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_11.jpg', '2025-07-23 05:14:57'),
+(43, 'PIN043', 'Gojo 12', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_12.jpg', '2025-07-23 05:14:57'),
+(50, 'YESO002', 'Kit Figuras Yeso Flores', 'Kit especializado con moldes de flores y plantas, yeso blanco, pinturas brillantes y herramientas de detalle.', 38.50, 'Kit figuras yeso', 25, 'img/yesos/', '2025-07-22 17:19:29'),
+(51, 'YESO003', 'Kit Figuras Yeso Personajes', 'Kit con moldes de personajes populares, yeso de alta calidad, pinturas metálicas y accesorios decorativos.', 52.75, 'Kit figuras yeso', 15, 'img/yesos/', '2025-07-22 17:19:29'),
+(52, 'YESO004', 'Kit Figuras Yeso Navidad', 'Kit temático navideño con moldes de árboles, estrellas y figuras festivas. Incluye pinturas con brillo y decoraciones.', 45.00, 'Kit figuras yeso', 30, 'img/yesos/', '2025-07-22 17:19:29'),
+(53, 'YESO005', '', 'Kit seguro para niños con moldes grandes, yeso no tóxico, pinturas lavables y herramientas de plástico.', 35.25, 'Kit figuras yeso', 35, 'img/yesos/', '2025-07-22 17:19:29'),
+(54, 'YESO006', 'Yesos Animales XL', 'Figuras de Hipopótamo, Oso y León', 48.99, 'Figuras de yeso', 18, 'img/yesos/', '2025-07-22 17:19:29'),
+(55, 'YESO007', 'Yesos Animales Mini', 'Figuras mini de mariquita, libelula, león, elefante y mariposa. ', 62.50, 'Figuras de yeso', 12, 'img/yesos/', '2025-07-22 17:19:29'),
+(56, 'YESO008', 'Yesos Vehículos Mini', 'Figuras mini de tren, avión, barco y carrito.', 75.25, 'Figuras de yeso', 10, 'img/yesos/', '2025-07-22 17:19:29'),
+(57, 'YESO009', 'Yesos Personajes', 'Figuras de Hello Kitty y Lego', 28.99, 'Figuras de yeso', 40, 'img/yesos/', '2025-07-22 17:19:29'),
+(58, 'YESO010', 'Yesos Fantasía', 'Figuras mini de Rey y Reina, Torre Eiffel y moneda', 85.00, 'Figuras de yeso', 8, 'img/yesos/', '2025-07-22 17:19:29'),
+(59, 'YESO001', 'Yesos Naturaleza', 'Figuritas mini de flor, hoja, fresita y sol.', 42.99, 'Figuras de yeso', 20, 'img/yesos/', '2025-07-22 17:19:29'),
+(60, 'YESO060', 'Yesos Love', 'Figuras mini de corazón, osito con corbatín y ositos love.', 50.00, 'Figuras de yeso', 1, 'img/yesos/', '2025-07-23 06:16:21');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `codigo` (`codigo`),
+  ADD KEY `idx_categoria` (`categoria`),
+  ADD KEY `idx_precio` (`precio`),
+  ADD KEY `idx_nombre` (`nombre`),
+  ADD KEY `idx_codigo` (`codigo`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
