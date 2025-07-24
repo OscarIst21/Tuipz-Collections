@@ -41,6 +41,9 @@ $totalPaginas = $resultado['total_paginas'];
             cursor: pointer;
             height: 100%;
         }
+        body{
+            height: 100vh;
+        }
         
         .producto-card:hover {
             transform: translateY(-5px);
@@ -72,7 +75,7 @@ $totalPaginas = $resultado['total_paginas'];
         }
         
         .btn-filtro:hover, .btn-filtro.active {
-            background: #4f6edb;
+            background: #234055;
             color: #fff;
             border-color: #232755;
             transform: scale(1.05);
@@ -114,7 +117,7 @@ $totalPaginas = $resultado['total_paginas'];
         .precio {
             font-size: 1.25rem;
             font-weight: bold;
-            color: #4f6edb;
+            color: #31607D;
         }
         
         .categoria-badge {
@@ -146,6 +149,20 @@ $totalPaginas = $resultado['total_paginas'];
             color: #fff !important;
         }
         
+        .btn-ver, .categoria{
+            color:#2A73A1; 
+            border: 1px solid #2A73A1
+        }
+
+        .mod-categoria{
+            background-color:#2A73A1 !important; 
+        }
+
+        .btn-ver:hover{
+            color:white;
+            background: #2A73A1;
+            border: 1px solid #2A73A1
+        }
         footer.bg-dark {
             background: #232755 !important;
             color: #fff !important;
@@ -274,7 +291,7 @@ $totalPaginas = $resultado['total_paginas'];
                         </p>
                         <div class="d-flex justify-content-between align-items-center">
                                                          <span class="precio"><?= formatearPrecio($producto['precio']) ?></span>
-                            <button class="btn btn-outline-primary btn-sm">
+                            <button class="btn btn-outline btn-sm  btn-ver">
                                 <i class="fas fa-eye me-1"></i>
                                 Ver
                             </button>
@@ -365,7 +382,7 @@ $totalPaginas = $resultado['total_paginas'];
                         </div>
                         <div class="col-md-6">
                             <h4 id="modalNombre"></h4>
-                            <span id="modalCategoria" class="badge bg-primary mb-3"></span>
+                            <span id="modalCategoria" class="badge bg-primary mb-3 mod-categoria"></span>
                             <p id="modalDescripcion" class="text-muted"></p>
                             <div class="mb-3">
                                 <strong>Precio:</strong>
