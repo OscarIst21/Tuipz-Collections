@@ -22,7 +22,7 @@ define('IMAGEN_PLACEHOLDER', 'https://via.placeholder.com/300x200?text=Sin+Image
 function conectarDB() {
     try {
         $pdo = new PDO(
-    "mysql:host=" . DB_HOST . ";port=3309;dbname=" . DB_NAME . ";charset=utf8",
+    "mysql:host=" . DB_HOST . ";port=3306;dbname=" . DB_NAME . ";charset=utf8",
     DB_USER,
     DB_PASS,
     [

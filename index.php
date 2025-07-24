@@ -18,6 +18,10 @@ $resultado = buscarProductos($pdo, $busqueda, $categoria, $pagina, PRODUCTOS_POR
 $productos = $resultado['productos'];
 $totalProductos = $resultado['total_productos'];
 $totalPaginas = $resultado['total_paginas'];
+
+// Filtrar productos con stock > 0
+$productos = array_filter($productos, function($p) { return isset($p['stock']) && $p['stock'] > 0; });
+$totalProductosMostrados = count($productos);
 ?>
 
 <!DOCTYPE html>
@@ -176,6 +180,36 @@ $totalPaginas = $resultado['total_paginas'];
             border: 2px solid #232755;
         }
         
+        /* Botón subir arriba */
+        #btnSubirArriba {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 9999;
+            background: #232755;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(35,39,85,0.15);
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        #btnSubirArriba.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #btnSubirArriba:hover {
+            background: #4f6edb;
+            color: #fff;
+        }
+        
         @media (max-width: 768px) {
             .producto-imagen {
                 height: 150px;
@@ -262,14 +296,19 @@ $totalPaginas = $resultado['total_paginas'];
             <div class="col-12">
                 <p class="text-muted">
                     <i class="fas fa-info-circle me-1"></i>
-                    Mostrando <?= count($productos) ?> de <?= $totalProductos ?> productos
+                    Mostrando <?= $totalProductosMostrados ?> de <?= $totalProductos ?> productos
                     <?= !empty($busqueda) ? " para '$busqueda'" : '' ?>
                     <?= !empty($categoria) ? " en '$categoria'" : '' ?>
                 </p>
             </div>
         </div>
 
-        <!-- Catálogo de Productos -->
+        <!-- Catálogo de Productos o aviso de Próximamente -->
+        <?php if ($categoria === 'kit lienzos'): ?>
+            <div class="alert alert-info text-center py-5 my-5 fs-3 fw-bold">
+                <i class="fas fa-hourglass-half me-2"></i>¡Próximamente...!
+            </div>
+        <?php else: ?>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-4">
             <?php foreach ($productos as $producto): ?>
             <div class="col">
@@ -280,7 +319,7 @@ $totalPaginas = $resultado['total_paginas'];
                     <img src="<?= htmlspecialchars($producto['imagen']) ?>" 
                          class="card-img-top producto-imagen" 
                          alt="<?= htmlspecialchars($producto['nombre']) ?>"
-                          onerror="this.onerror=null; this.src='img/Tuipz_logo.png';">
+                         onerror="this.onerror=null; this.src='img/Tuipz_logo.png';">
                     <div class="card-body d-flex flex-column">
                         <h6 class="card-title"><?= htmlspecialchars($producto['nombre']) ?></h6>
                         <span class="badge bg-primary categoria-badge mb-2">
@@ -290,7 +329,7 @@ $totalPaginas = $resultado['total_paginas'];
                             <?= htmlspecialchars(substr($producto['descripcion'], 0, 80)) ?>...
                         </p>
                         <div class="d-flex justify-content-between align-items-center">
-                                                         <span class="precio"><?= formatearPrecio($producto['precio']) ?></span>
+                            <span class="precio"><?= formatearPrecio($producto['precio']) ?></span>
                             <button class="btn btn-outline btn-sm  btn-ver">
                                 <i class="fas fa-eye me-1"></i>
                                 Ver
@@ -301,6 +340,7 @@ $totalPaginas = $resultado['total_paginas'];
             </div>
             <?php endforeach; ?>
         </div>
+        <?php endif; ?>
 
         <!-- Paginación -->
         <?php if ($totalPaginas > 1): ?>
@@ -407,9 +447,18 @@ $totalPaginas = $resultado['total_paginas'];
     <!-- Footer -->
     <footer class="bg-dark text-light py-4 mt-5">
         <div class="container text-center">
+            <a href="https://www.facebook.com/share/16m6eRv2EJ/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color: #fff; margin-right: 10px; font-size: 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                <i class="fab fa-facebook"></i>
+                <span style="font-size: 1rem; color: #fff;">Tuipz Collections</span>
+            </a>
             <p>&copy; 2025 Tuipz Collections. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- Botón subir arriba -->
+    <button id="btnSubirArriba" title="Subir arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -428,6 +477,19 @@ $totalPaginas = $resultado['total_paginas'];
                 document.getElementById('modalPrecio').textContent = '$' + parseFloat(producto.precio).toFixed(2);
                 document.getElementById('modalStock').textContent = producto.stock;
             });
+        });
+
+        // Botón subir arriba
+        const btnSubirArriba = document.getElementById('btnSubirArriba');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 200) {
+                btnSubirArriba.classList.add('show');
+            } else {
+                btnSubirArriba.classList.remove('show');
+            }
+        });
+        btnSubirArriba.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
