@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3309
--- Tiempo de generación: 23-07-2025 a las 08:23:04
+-- Tiempo de generación: 24-07-2025 a las 20:43:19
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -65,11 +65,11 @@ INSERT INTO `productos` (`id`, `codigo`, `nombre`, `descripcion`, `precio`, `cat
 (19, 'PIN019', 'Stitch 5', 'Adorable pin de Stitch. Ideal para mochilas.', 50.00, 'Pines', 28, 'img/pines/stitch_05.jpg', '2025-07-22 17:19:29'),
 (20, 'PIN020', 'Stitch 6', 'Adorable pin de Stitch. Ideal para mochilas.', 50.00, 'Pines', 8, 'img/pines/stitch_06.jpg', '2025-07-22 17:19:29'),
 (21, 'PIN021', 'Stitch 7', 'Adorable pin de Stitch. Ideal para mochilas.', 50.00, 'Pines', 1, 'img/pines/stitch_07.jpg', '2025-07-23 05:05:19'),
-(22, 'PIN022', 'Hello Kitty 1', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_01.jpg', '2025-07-23 05:06:45'),
-(23, 'PIN023', 'Hello Kitty 2', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_02.jpg', '2025-07-23 05:06:45'),
-(24, 'PIN024', 'Hello Kitty 3', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_03.jpg', '2025-07-23 05:08:13'),
-(25, 'PIN025', 'Hello Kitty 4', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_04.jpg', '2025-07-23 05:08:30'),
-(26, 'PIN026', 'Hello Kitty 5', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_05.jpg', '2025-07-23 05:08:41'),
+(22, 'PIN022', 'Hello Kitty 1', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_1.png', '2025-07-23 05:06:45'),
+(23, 'PIN023', 'Hello Kitty 2', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_02.png', '2025-07-23 05:06:45'),
+(24, 'PIN024', 'Hello Kitty 3', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_03.png', '2025-07-23 05:08:13'),
+(25, 'PIN025', 'Hello Kitty 4', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_04.png', '2025-07-23 05:08:30'),
+(26, 'PIN026', 'Hello Kitty 5', 'Tierno pin de Hello Kitty, elegante para mochilas, ropas y accesorios.', 50.00, 'Pines', 1, 'img/pines/helloKitty_05.png', '2025-07-23 05:08:41'),
 (27, 'PIN027', 'Kuromi 1', 'Pin con colgante de Kuromi, el mix perfecto entre ternura y travesura. Ideal para mochilas, chamarras o tu estante kawaii.', 50.00, 'Pines', 1, 'img/pines/kuromi_01.jpg', '2025-07-23 05:09:19'),
 (28, 'PIN028', 'Kuromi 2', 'Pin con colgante de Kuromi, el mix perfecto entre ternura y travesura. Ideal para mochilas, chamarras o tu estante kawaii.', 50.00, 'Pines', 1, 'img/pines/kuromi_02.jpg', '2025-07-23 05:10:52'),
 (29, 'PIN029', 'Kuromi 3', 'Pin con colgante de Kuromi, el mix perfecto entre ternura y travesura. Ideal para mochilas, chamarras o tu estante kawaii.', 50.00, 'Pines', 1, 'img/pines/kuromi_03.jpg', '2025-07-23 05:10:52'),
@@ -87,17 +87,22 @@ INSERT INTO `productos` (`id`, `codigo`, `nombre`, `descripcion`, `precio`, `cat
 (41, 'PIN041', 'Gojo 10', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_10.jpg', '2025-07-23 05:14:57'),
 (42, 'PIN042', 'Gojo 11', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_11.jpg', '2025-07-23 05:14:57'),
 (43, 'PIN043', 'Gojo 12', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_12.jpg', '2025-07-23 05:14:57'),
-(50, 'YESO002', 'Kit Figuras Yeso Flores', 'Kit especializado con moldes de flores y plantas, yeso blanco, pinturas brillantes y herramientas de detalle.', 38.50, 'Kit figuras yeso', 25, 'img/yesos/', '2025-07-22 17:19:29'),
-(51, 'YESO003', 'Kit Figuras Yeso Personajes', 'Kit con moldes de personajes populares, yeso de alta calidad, pinturas metálicas y accesorios decorativos.', 52.75, 'Kit figuras yeso', 15, 'img/yesos/', '2025-07-22 17:19:29'),
-(52, 'YESO004', 'Kit Figuras Yeso Navidad', 'Kit temático navideño con moldes de árboles, estrellas y figuras festivas. Incluye pinturas con brillo y decoraciones.', 45.00, 'Kit figuras yeso', 30, 'img/yesos/', '2025-07-22 17:19:29'),
-(53, 'YESO005', '', 'Kit seguro para niños con moldes grandes, yeso no tóxico, pinturas lavables y herramientas de plástico.', 35.25, 'Kit figuras yeso', 35, 'img/yesos/', '2025-07-22 17:19:29'),
-(54, 'YESO006', 'Yesos Animales XL', 'Figuras de Hipopótamo, Oso y León', 48.99, 'Figuras de yeso', 18, 'img/yesos/', '2025-07-22 17:19:29'),
-(55, 'YESO007', 'Yesos Animales Mini', 'Figuras mini de mariquita, libelula, león, elefante y mariposa. ', 62.50, 'Figuras de yeso', 12, 'img/yesos/', '2025-07-22 17:19:29'),
-(56, 'YESO008', 'Yesos Vehículos Mini', 'Figuras mini de tren, avión, barco y carrito.', 75.25, 'Figuras de yeso', 10, 'img/yesos/', '2025-07-22 17:19:29'),
-(57, 'YESO009', 'Yesos Personajes', 'Figuras de Hello Kitty y Lego', 28.99, 'Figuras de yeso', 40, 'img/yesos/', '2025-07-22 17:19:29'),
-(58, 'YESO010', 'Yesos Fantasía', 'Figuras mini de Rey y Reina, Torre Eiffel y moneda', 85.00, 'Figuras de yeso', 8, 'img/yesos/', '2025-07-22 17:19:29'),
-(59, 'YESO001', 'Yesos Naturaleza', 'Figuritas mini de flor, hoja, fresita y sol.', 42.99, 'Figuras de yeso', 20, 'img/yesos/', '2025-07-22 17:19:29'),
-(60, 'YESO060', 'Yesos Love', 'Figuras mini de corazón, osito con corbatín y ositos love.', 50.00, 'Figuras de yeso', 1, 'img/yesos/', '2025-07-23 06:16:21');
+(45, 'YESO002', 'Kit Osito 01', 'Incluye una figura de osito grande y 2 figuras mini de vehículos, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 25, 'img/yesos/', '2025-07-22 17:19:29'),
+(46, 'YESO003', 'Kit Osito 02', 'Incluye una figura de osito grande y 2 figuras mini de vehículos, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 15, 'img/yesos/', '2025-07-22 17:19:29'),
+(47, 'YESO004', 'Kit princesa', 'Incluye una corona y 2 figuras mini de naturaleza, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 30, 'img/yesos/', '2025-07-22 17:19:29'),
+(48, 'YESO005', 'Kit Hello Kitty', 'Incluye una figura de Hello kitty, 3 mini figuras variadas, hasta 3 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 35, 'img/yesos/', '2025-07-22 17:19:29'),
+(61, 'YESO006', 'Kit León', 'Incluye una figura de león, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 1, 'img/yesos/', '2025-07-24 17:59:42'),
+(63, 'YESO007', 'Kit Hipopótamo', 'Incluye una figura de hipopótamo, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 1, 'img/yesos/', '2025-07-24 18:02:52'),
+(64, 'YESO008', 'Kit Unicornio', 'Incluye una figura de unicornio, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 1, 'img/yesos/', '2025-07-24 18:02:52'),
+(65, 'YESO009', 'Kit Lego', 'Incluye una figura grande de Lego, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 1, 'img/yesos/', '2025-07-24 18:02:52'),
+(66, 'YESO010', 'Kit Dinosaurio', 'Incluye una figura grande de dinosaurio, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 60.00, 'Kit figuras yeso', 1, 'img/yesos/', '2025-07-24 18:02:52'),
+(67, 'PIN044', 'Pines de Animales', 'Variedad de pines de animales. Se venden por separado.', 40.00, 'Pines', 1, 'img/pines/animales.png', '2025-07-24 18:23:55'),
+(69, 'PIN046', 'Pines de Frutas', 'Variedad de pines de frutas. Se venden por separado.', 40.00, 'Pines', 1, 'img/pines/frutas.png', '2025-07-24 18:26:01'),
+(70, 'PIN047', 'Pines de Bebidas', 'Variedad de pines de bebidas. Se venden por separado.', 40.00, 'Pines', 1, 'img/pines/bebidas.png', '2025-07-24 18:26:01'),
+(71, 'PIN048', 'Pines de Plantas', 'Variedad de pines de plantas. Se venden por separado.', 40.00, 'Pines', 1, 'img/pines/plantas.png', '2025-07-24 18:26:01'),
+(72, 'PIN049', 'Pines de Naturaleza', 'Variedad de pines de naturaleza. Se venden por separado.', 40.00, 'Pines', 1, 'img/pines/naturaleza.png', '2025-07-24 18:26:01'),
+(73, 'PIN051', 'Pines de Accesorios', 'Variedad de pines de accesorios. Se venden por separado.', 40.00, 'Pines', 1, 'img/pines/accesorios.png', '2025-07-24 18:26:01'),
+(74, 'PIN050', 'Pines variados', 'Variedad de pines. Se venden por separado.', 40.00, 'Pines', 1, 'img/pines/varios.png', '2025-07-24 18:26:01');
 
 --
 -- Índices para tablas volcadas
@@ -122,7 +127,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
