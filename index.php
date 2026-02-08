@@ -263,27 +263,20 @@ $totalProductosMostrados = count($productos);
             <!-- Filtros por categoría -->
             <div class="row">
                 <div class="col-12 text-center">
+                    <?php $cats = obtenerCategorias(); ?>
                     <div class="btn-group" role="group">
                         <a href="?<?= http_build_query(array_merge($_GET, ['categoria' => '', 'pagina' => 1])) ?>" 
                            class="btn btn-filtro <?= empty($categoria) ? 'active' : '' ?>">
                             <i class="fas fa-th-large me-1"></i>
                             Todos
                         </a>
-                        <a href="?<?= http_build_query(array_merge($_GET, ['categoria' => 'pines', 'pagina' => 1])) ?>" 
-                           class="btn btn-filtro <?= $categoria === 'pines' ? 'active' : '' ?>">
-                            <i class="fas fa-thumbtack me-1"></i>
-                            Pines
+                        <?php foreach ($cats as $key => $label): ?>
+                        <a href="?<?= http_build_query(array_merge($_GET, ['categoria' => $key, 'pagina' => 1])) ?>" 
+                           class="btn btn-filtro <?= $categoria === $key ? 'active' : '' ?>">
+                            <i class="fas fa-tag me-1"></i>
+                            <?= htmlspecialchars($label) ?>
                         </a>
-                        <a href="?<?= http_build_query(array_merge($_GET, ['categoria' => 'kit lienzos', 'pagina' => 1])) ?>" 
-                           class="btn btn-filtro <?= $categoria === 'kit lienzos' ? 'active' : '' ?>">
-                            <i class="fas fa-palette me-1"></i>
-                            Kit Lienzos
-                        </a>
-                        <a href="?<?= http_build_query(array_merge($_GET, ['categoria' => 'kit figuras yeso', 'pagina' => 1])) ?>" 
-                           class="btn btn-filtro <?= $categoria === 'kit figuras yeso' ? 'active' : '' ?>">
-                            <i class="fas fa-brush me-1"></i>
-                            Kit Figuras Yeso
-                        </a>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
@@ -298,13 +291,17 @@ $totalProductosMostrados = count($productos);
                     <i class="fas fa-info-circle me-1"></i>
                     Mostrando <?= $totalProductosMostrados ?> de <?= $totalProductos ?> productos
                     <?= !empty($busqueda) ? " para '$busqueda'" : '' ?>
-                    <?= !empty($categoria) ? " en '$categoria'" : '' ?>
+                    <?php if (!empty($categoria)): ?>
+                        <?php $cats = obtenerCategorias(); ?>
+                        en '<?= htmlspecialchars($cats[$categoria] ?? $categoria) ?>'
+                    <?php endif; ?>
                 </p>
             </div>
         </div>
 
         <!-- Catálogo de Productos o aviso de Próximamente -->
-        <?php if ($categoria === 'kit lienzos'): ?>
+        <?php $catsActivas = obtenerCategorias(); ?>
+        <?php if ($categoria === 'kit lienzos' && array_key_exists('kit lienzos', $catsActivas)): ?>
             <div class="alert alert-info text-center py-5 my-5 fs-3 fw-bold">
                 <i class="fas fa-hourglass-half me-2"></i>¡Próximamente...!
             </div>
@@ -452,12 +449,12 @@ $totalProductosMostrados = count($productos);
                     <i class="fab fa-facebook"></i>
                     <span style="font-size: 1rem; color: #fff;">Tuipz Collections</span>
                 </a>
-                <a href="https://www.instagram.com/tuipz_collections/" target="_blank" rel="noopener" style="color: #fff; font-size: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 8px;">
-                    <i class="fab fa-instagram"></i>
-                    <span style="font-size: 1rem; color: #fff;">@tuipz_collections</span>
+                <a href="https://wa.me/526121774861" target="_blank" rel="noopener" style="color: #fff; font-size: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                    <i class="fab fa-whatsapp"></i>
+                    <span style="font-size: 1rem; color: #fff;">Tuipz Collections</span>
                 </a>
             </div>
-            <p>&copy; 2025 Tuipz Collections. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Tuipz Collections. Todos los derechos reservados.</p>
         </div>
     </footer>
 

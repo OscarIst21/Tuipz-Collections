@@ -18,6 +18,9 @@ define('SITIO_URL', 'http://localhost/catalogo_Tuipz/');
 // Configuración de imágenes
 define('IMAGEN_PLACEHOLDER', 'https://via.placeholder.com/300x200?text=Sin+Imagen');
 
+define('ADMIN_USER', 'admin');
+define('ADMIN_PASS', 'tuipz2026');
+
 // Función para conectar a la base de datos
 function conectarDB() {
     try {
@@ -51,19 +54,48 @@ function formatearPrecio($precio) {
     return '$' . number_format($precio, 2);
 }
 
-// Función para obtener categorías disponibles
 function obtenerCategorias() {
-    return [
-        'pines' => 'Pines',
-        'kit lienzos' => 'Kit Lienzos',
-        'kit figuras yeso' => 'Kit Figuras Yeso'
-    ];
+    try {
+        $pdo = conectarDB();
+        $cats = $pdo->query("SHOW TABLES LIKE 'categorias_admin'")->fetchColumn();
+        if ($cats) {
+            $activos = $pdo->query("SELECT nombre FROM categorias_admin WHERE activo=1 ORDER BY nombre")->fetchAll(PDO::FETCH_COLUMN);
+            if ($activos && count($activos) > 0) {
+                return array_combine(array_map('strtolower', $activos), $activos);
+            }
+        }
+        return obtenerCategoriasEnum($pdo);
+    } catch (Throwable $e) {
+        return [
+            'pines' => 'Pines',
+            'kit lienzos' => 'Kit Lienzos',
+            'kit figuras yeso' => 'Kit Figuras Yeso'
+        ];
+    }
 }
 
 // Función para validar categoría
 function validarCategoria($categoria) {
     $categorias = obtenerCategorias();
-    return array_key_exists($categoria, $categorias);
+    return array_key_exists(strtolower($categoria), $categorias) || in_array($categoria, $categorias, true);
+}
+
+function normalizarCategoriaSeleccion($categoria) {
+    $categorias = obtenerCategorias();
+    $key = strtolower($categoria);
+    if (array_key_exists($key, $categorias)) return $categorias[$key];
+    if (in_array($categoria, $categorias, true)) return $categoria;
+    return '';
+}
+
+function obtenerCategoriasActivas($pdo) {
+    $ex = $pdo->query("SHOW TABLES LIKE 'categorias_admin'")->fetchColumn();
+    if ($ex) {
+        $activos = $pdo->query("SELECT nombre FROM categorias_admin WHERE activo=1 ORDER BY nombre")->fetchAll(PDO::FETCH_COLUMN);
+        if ($activos) return $activos;
+    }
+    $map = obtenerCategoriasEnum($pdo);
+    return array_values($map);
 }
 
 // Función para generar URL de paginación
@@ -110,10 +142,18 @@ function buscarProductos($pdo, $busqueda = '', $categoria = '', $pagina = 1, $po
         $params[] = "%$busqueda%";
     }
     
-    // Agregar filtro de categoría
-    if (!empty($categoria) && validarCategoria($categoria)) {
-        $sql .= " AND categoria = ?";
-        $params[] = $categoria;
+    if (!empty($categoria)) {
+        $cat = normalizarCategoriaSeleccion($categoria);
+        if ($cat !== '') {
+            $sql .= " AND categoria = ?";
+            $params[] = $cat;
+        }
+    }
+    $actives = obtenerCategoriasActivas($pdo);
+    if (!empty($actives)) {
+        $placeholders = implode(',', array_fill(0, count($actives), '?'));
+        $sql .= " AND categoria IN ($placeholders)";
+        $params = array_merge($params, $actives);
     }
     
     // Contar total de productos
@@ -157,5 +197,37 @@ function obtenerProductosRelacionados($pdo, $categoria, $idExcluir, $limite = 4)
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$categoria, $idExcluir, $limite]);
     return $stmt->fetchAll();
+}
+
+function admin_login($usuario, $contrasena) {
+    if ($usuario === ADMIN_USER && $contrasena === ADMIN_PASS) {
+        $_SESSION['admin'] = true;
+        return true;
+    }
+    return false;
+}
+
+function admin_logout() {
+    unset($_SESSION['admin']);
+}
+
+function admin_requerido() {
+    if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
+        header('Location: login.php');
+        exit;
+    }
+}
+
+function obtenerCategoriasEnum($pdo) {
+    $sql = "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = ? AND TABLE_NAME = 'productos' AND COLUMN_NAME = 'categoria'";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([DB_NAME]);
+    $row = $stmt->fetchColumn();
+    if (!$row) return obtenerCategorias();
+    $inicio = strpos($row, '(');
+    $fin = strrpos($row, ')');
+    $contenido = substr($row, $inicio + 1, $fin - $inicio - 1);
+    $valores = array_map(function($v) { return trim(trim($v), "'"); }, explode(',', $contenido));
+    return array_combine(array_map('strtolower', $valores), $valores);
 }
 ?> 
