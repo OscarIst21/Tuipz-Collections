@@ -447,10 +447,16 @@ $totalProductosMostrados = count($productos);
     <!-- Footer -->
     <footer class="bg-dark text-light py-4 mt-5">
         <div class="container text-center">
-            <a href="https://www.facebook.com/share/16m6eRv2EJ/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color: #fff; margin-right: 10px; font-size: 1.5rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
-                <i class="fab fa-facebook"></i>
-                <span style="font-size: 1rem; color: #fff;">Tuipz Collections</span>
-            </a>
+            <div class="d-flex justify-content-center align-items-center gap-3 mb-2">
+                <a href="https://www.facebook.com/share/16m6eRv2EJ/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color: #fff; font-size: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                    <i class="fab fa-facebook"></i>
+                    <span style="font-size: 1rem; color: #fff;">Tuipz Collections</span>
+                </a>
+                <a href="https://www.instagram.com/tuipz_collections/" target="_blank" rel="noopener" style="color: #fff; font-size: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                    <i class="fab fa-instagram"></i>
+                    <span style="font-size: 1rem; color: #fff;">@tuipz_collections</span>
+                </a>
+            </div>
             <p>&copy; 2025 Tuipz Collections. Todos los derechos reservados.</p>
         </div>
     </footer>

@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3309
--- Tiempo de generación: 24-07-2025 a las 20:43:19
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 24-07-2025 a las 23:52:02
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -87,15 +87,15 @@ INSERT INTO `productos` (`id`, `codigo`, `nombre`, `descripcion`, `precio`, `cat
 (41, 'PIN041', 'Gojo 10', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_10.jpg', '2025-07-23 05:14:57'),
 (42, 'PIN042', 'Gojo 11', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_11.jpg', '2025-07-23 05:14:57'),
 (43, 'PIN043', 'Gojo 12', 'Pin metálico de Satoru Gojo. Perfecto para darle estilo a tu mochila, ropa o colección. ¡Edición limitada para fans de Jujutsu Kaisen!', 50.00, 'Pines', 1, 'img/pines/gojo_12.jpg', '2025-07-23 05:14:57'),
-(45, 'YESO002', 'Kit Osito 01', 'Incluye una figura de osito grande y 2 figuras mini de vehículos, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 25, 'img/yesos/', '2025-07-22 17:19:29'),
-(46, 'YESO003', 'Kit Osito 02', 'Incluye una figura de osito grande y 2 figuras mini de vehículos, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 15, 'img/yesos/', '2025-07-22 17:19:29'),
-(47, 'YESO004', 'Kit princesa', 'Incluye una corona y 2 figuras mini de naturaleza, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 30, 'img/yesos/', '2025-07-22 17:19:29'),
-(48, 'YESO005', 'Kit Hello Kitty', 'Incluye una figura de Hello kitty, 3 mini figuras variadas, hasta 3 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 35, 'img/yesos/', '2025-07-22 17:19:29'),
-(61, 'YESO006', 'Kit León', 'Incluye una figura de león, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 1, 'img/yesos/', '2025-07-24 17:59:42'),
-(63, 'YESO007', 'Kit Hipopótamo', 'Incluye una figura de hipopótamo, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 1, 'img/yesos/', '2025-07-24 18:02:52'),
-(64, 'YESO008', 'Kit Unicornio', 'Incluye una figura de unicornio, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 1, 'img/yesos/', '2025-07-24 18:02:52'),
-(65, 'YESO009', 'Kit Lego', 'Incluye una figura grande de Lego, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 1, 'img/yesos/', '2025-07-24 18:02:52'),
-(66, 'YESO010', 'Kit Dinosaurio', 'Incluye una figura grande de dinosaurio, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 60.00, 'Kit figuras yeso', 1, 'img/yesos/', '2025-07-24 18:02:52'),
+(45, 'YESO002', 'Kit Osito 01', 'Incluye una figura de osito grande y 2 figuras mini de vehículos, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 25, 'img/yesos/oso.jpg', '2025-07-22 17:19:29'),
+(46, 'YESO003', 'Kit Osito 02', 'Incluye una figura de osito grande y 2 figuras mini de vehículos, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 15, 'img/yesos/oso2.jpg', '2025-07-22 17:19:29'),
+(47, 'YESO004', 'Kit princesa', 'Incluye una corona y 2 figuras mini de naturaleza, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 30, 'img/yesos/corona2.jpg', '2025-07-22 17:19:29'),
+(48, 'YESO005', 'Kit Hello Kitty', 'Incluye una figura de Hello kitty, 3 mini figuras variadas, hasta 3 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 35, 'img/yesos/hellokitty.jpg', '2025-07-22 17:19:29'),
+(61, 'YESO006', 'Kit León', 'Incluye una figura de león, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 1, 'img/yesos/leon.jpg', '2025-07-24 17:59:42'),
+(63, 'YESO007', 'Kit Hipopótamo', 'Incluye una figura de hipopótamo, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 1, 'img/yesos/hipopotamo.jpg', '2025-07-24 18:02:52'),
+(64, 'YESO008', 'Kit Unicornio', 'Incluye una figura de unicornio, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 1, 'img/yesos/unicornio.jpg', '2025-07-24 18:02:52'),
+(65, 'YESO009', 'Kit Lego', 'Incluye una figura grande de Lego, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 40.00, 'Kit figuras yeso', 1, 'img/yesos/lego.jpg', '2025-07-24 18:02:52'),
+(66, 'YESO010', 'Kit Dinosaurio', 'Incluye una figura grande de dinosaurio, 2 figuras mini, hasta 4 pinturas lavables y un pincel.', 60.00, 'Kit figuras yeso', 1, 'img/yesos/dinosaurio.jpg', '2025-07-24 18:02:52'),
 (67, 'PIN044', 'Pines de Animales', 'Variedad de pines de animales. Se venden por separado.', 40.00, 'Pines', 1, 'img/pines/animales.png', '2025-07-24 18:23:55'),
 (69, 'PIN046', 'Pines de Frutas', 'Variedad de pines de frutas. Se venden por separado.', 40.00, 'Pines', 1, 'img/pines/frutas.png', '2025-07-24 18:26:01'),
 (70, 'PIN047', 'Pines de Bebidas', 'Variedad de pines de bebidas. Se venden por separado.', 40.00, 'Pines', 1, 'img/pines/bebidas.png', '2025-07-24 18:26:01'),
